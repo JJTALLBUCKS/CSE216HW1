@@ -58,7 +58,7 @@ export default class OpenAddressHashTable {
                 return testKVP.value;
             }
             index++;
-            if(index == length)
+            if(index == this.length)
             {
                 index = 0;
             }
@@ -69,12 +69,91 @@ export default class OpenAddressHashTable {
     
     // @todo - YOU MUST DEFINE THIS METHOD
     removeValue(key) { 
-        // @todo - YOU MUST DEFINE THIS METHOD
+        let index = this.hashCode(key);
+        let count = 0;
+        while (count < this.length) {
+            let testKVP = this.hashTable[index];
+            if (testKVP == null) {
+                return null;
+            }
+
+            else if (testKVP.key == key) {
+                delete this.hashTable[index];
+                this.hashTable[index] = null;
+                this.size--;
+
+                // rehash the table
+                let temp = new Array(this.length)
+                let counter = 0;
+
+                for (let i = 0; i < this.length; i++) {
+                    let item = this.hashTable[i];
+                    if (item != null) {
+                        temp[counter] = item;
+                        counter++;
+                    }
+                    this.hashTable[i] = null;
+                }
+                this.size = 0;
+
+                for(let i = 0; i < counter; i++) {
+                    let item = temp[i];
+                    let keyToRehash = item.key;
+                    let valueToRehash = item.value;
+                    this.putValue(keyToRehash, valueToRehash);
+
+                }
+                return;
+            }
+            index++;
+            if(index == length)
+            {
+                index = 0;
+            }
+            count++;
+        }
+
     }
 
     // @todo - YOU MUST DEFINE THIS METHOD
     putValue(key, item) {
+        let index = this.hashCode(key);
+        let count = 0;
+        while (count < this.length) {
+            let testKVP = this.hashTable[index];
 
+            if (testKVP == null) {
+                this.hashTable[index] = new KeyValuePair(key, item);
+                this.size++;
+                return;
+            }
+            else if (testKVP.key == key) {
+                this.hashTable[index].value = item;
+                this.size++;
+                return;
+            }
+            index++;
+
+            if(index == this.length){
+                index = 0;
+            }
+            count++;
+        }      
+        let temp = this.hashTable;
+        this.length = this.length * 2;
+        this.hashTable = new Array(this.length);
+        for(let i = 0; i < this.length; i++) {
+            this.hashTable[i] = null;
+        }
+        let numToCopy = this.size;
+        this.size = 0;
+        for (let i = 0; i < numToCopy; i++) {
+            let kvp = temp[i];
+            let keyToMove = kvp.key;
+            let valueToMove = kvp.value;
+            this.putValue(keyToMove, valueToMove);
+        }
+        this.putValue(key, item);
     }
     
     toString() {
