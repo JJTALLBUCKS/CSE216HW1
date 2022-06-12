@@ -23,7 +23,7 @@ function addPersonToHashTable(person, hashTable) {
 let hashTable = new OpenAddressHashTable(NUM_BINS, KEY_LENGTH);
 
 // DEMONSTRATE ADDING VALUES TO THE HASH TABLE, WHICH INCLUDES THE NEED TO MAKE THE HASH TABLE BIGGER
-addPersonToHashTable(new Undergraduate(hashTable.generateKey(), "George", "Harrison", 4.0, "U4"), hashTable);
+addPersonToHashTable(new Student(hashTable.generateKey(), "George", "Harrison", 4.0), hashTable);
 addPersonToHashTable(new Employee(hashTable.generateKey(), "Paul", "McCartney", 80000), hashTable);
 addPersonToHashTable(new Employee(hashTable.generateKey(), "Ringo", "Starr", 40000), hashTable);
 addPersonToHashTable(new Person(hashTable.generateKey(), "Chuck", "Berry"), hashTable);
