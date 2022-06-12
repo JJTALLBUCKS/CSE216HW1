@@ -21,7 +21,7 @@ class Employee extends Person {
     }
 }
 
-class Student extends Person {
+export default class Student extends Person {
     constructor(initKey, initFirstName, initLastName, initGPA) {
         super(initKey, initFirstName, initLastName);
         this.gpa = initGPA;
