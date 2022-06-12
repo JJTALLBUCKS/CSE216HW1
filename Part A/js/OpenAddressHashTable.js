@@ -47,11 +47,29 @@ export default class OpenAddressHashTable {
     
     // @todo - YOU MUST DEFINE THIS METHOD
     getValue(key) {
+        let index = this.hashCode(key);
+        let count = 0;
+        while (count < this.length) {
+            let testKVP = this.hashTable[index];
+            if (testKVP == null) {
+                return null;
+            }
+            else if (testKVP.key == key) {
+                return testKVP.value;
+            }
+            index++;
+            if(index == length)
+            {
+                index = 0;
+            }
+            count++;
+        }
         return null;
     }
     
     // @todo - YOU MUST DEFINE THIS METHOD
-    removeValue(key) {   
+    removeValue(key) { 
+        // @todo - YOU MUST DEFINE THIS METHOD
     }
 
     // @todo - YOU MUST DEFINE THIS METHOD
