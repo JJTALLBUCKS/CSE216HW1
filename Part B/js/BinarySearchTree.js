@@ -21,7 +21,7 @@ export default class BinarySearchTree {
         for (let i = 0; i < this.keyLength; i++) {
             let randomNum = Math.floor(Math.random() * 26);
             let randomChar;
-            randomNum + 97;
+            randomNum += 97;
             randomChar = String.fromCharCode(randomNum);
             key += randomChar;
         }
@@ -57,7 +57,13 @@ export default class BinarySearchTree {
 
     // @todo - YOU MUST DEFINE THIS METHOD
     putValue(key, value) {
-        
+        if(this.root == null){
+            this.root = new Node(key, value, null, null, null);
+            this.size++;
+            return;
+        }
+
+        this.putValueRecursively(key, value, this.root);
     }
 
 
@@ -90,7 +96,6 @@ export default class BinarySearchTree {
         else{
             return this.getValueRecursively(key, this.root);
         }
-        
     }
 
 
