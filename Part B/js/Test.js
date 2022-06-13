@@ -39,12 +39,12 @@ tree.putValue(dgKey, new Employee(dgKey, "David", "Gilmour", 120000));
 printBST("\nAfter Changing 3 Items", tree);
 
 // DEMONSTRATE GETTING VALUES FROM THE BST
-// let p = tree.getValue(jlKey);
-// console.log("\nget " + jlKey + ": " + p.toString() + "\n");
-// p = tree.getValue(cwKey);
-// console.log("\nget " + cwKey + ": " + p.toString() + "\n");
-// p = tree.getValue(dgKey);
-// console.log("\nget " + dgKey + ": " + p.toString() + "\n");
+let p = tree.getValue(jlKey);
+console.log("\nget " + jlKey + ": " + p.toString() + "\n");
+p = tree.getValue(cwKey);
+console.log("\nget " + cwKey + ": " + p.toString() + "\n");
+p = tree.getValue(dgKey);
+console.log("\nget " + dgKey + ": " + p.toString() + "\n");
 
 // NOW LET'S TRY REPLACING THE DATA IN THE ABOVE THREE
 tree.putValue(jlKey, new Student(jlKey, "Otis", "Redding", 3.5));

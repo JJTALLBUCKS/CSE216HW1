@@ -69,22 +69,22 @@ export default class BinarySearchTree {
 
     getValueRecursively(key, testNode){
         if(testNode.key < key){
-            if (testNode.left == null) {
+            if (testNode.right == null) {
                 return null;
             }
             else {
-                return this.getValueRecursively(key, testNode.left);
+                return this.getValueRecursively(key, testNode.right);
             }
         }
         else if(testNode.key == key){
             return testNode.data;
         }
         else{
-            if (testNode.right == null) {
+            if (testNode.left == null) {
                 return null;
             }
             else {
-                return this.getValueRecursively(key, testNode.right);
+                return this.getValueRecursively(key, testNode.left);
             }
         }
     }
