@@ -101,12 +101,12 @@ export default class BinarySearchTree {
 
     // @todo - YOU MUST DEFINE THIS METHOD
     removeValue(key) {
-        traveller = this.root;
-        found = false;
+        var traveller = this.root;
+        var found = false;
         while(!found){
             if(traveller.key == key){
                 if(traveller.left != null){
-                    largest = traveller.left;
+                    let largest = traveller.left;
                     while(largest.right != null){
                         largest = largest.right;
                     }
@@ -121,7 +121,7 @@ export default class BinarySearchTree {
                     }
                 }
                 else if(traveller.right != null){
-                    smallest = traveller.right;
+                    let smallest = traveller.right;
                     while(smallest.left != null){
                         smallest = smallest.left;
                     }
@@ -149,7 +149,7 @@ export default class BinarySearchTree {
                 this.size--;
                 found = true;
             }
-            else if(this.key < traveller.key)
+            else if(key < traveller.key)
             {
                 if(traveller.left == null){
                     return;
